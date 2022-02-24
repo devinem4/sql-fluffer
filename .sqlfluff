@@ -1,0 +1,50 @@
+[sqlfluff]
+# L022 = Blank line expected but not found after CTE closing bracket.
+# L037 = Ambiguous ordering directions for columns in order by clause.
+# L052 = Statements must end with a semi-colon.
+exclude_rules = L022, L037, L052
+
+[sqlfluff:rules]
+tab_space_size = 4
+max_line_length = 80
+indent_unit = space
+comma_style = trailing
+allow_scalar = True
+single_table_references = qualified
+quoted_identifiers_policy = all
+unquoted_identifiers_policy = all
+
+[sqlfluff:rules:L007]
+# Operators should follow a standard for being before/after newlines.
+operator_new_lines = after
+
+[sqlfluff:rules:L010]
+# Keywords Capitalisation
+capitalisation_policy = lower
+
+[sqlfluff:rules:L011]
+# Explicit aliasing of Tables
+aliasing = explicit
+
+[sqlfluff:rules:L012]
+# Explicit aliasing of Columns
+aliasing = explicit
+
+[sqlfluff:rules:L013]
+# Allow scalar
+allow_scalar = False
+
+[sqlfluff:rules:L016]
+# Max Line Length
+ignore_comment_clauses = False
+ignore_comment_lines = False
+indent_unit = space
+max_line_length = 88
+
+[sqlfluff:rules:L038]
+# Trailing commas within select clause
+select_clause_trailing_comma = forbid
+
+[sqlfluff:rules:L042]
+# Join/From clauses should not contain subqueries. Use CTEs instead.
+forbid_subquery_in = both
