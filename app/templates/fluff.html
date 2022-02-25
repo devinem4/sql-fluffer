@@ -1,8 +1,27 @@
 <html>
-<head>
+  <head>
     <title>SQL Fluffer</title>
-</head>
-<body>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet" />
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
     <h1>Hello sql fluffer</h1>
-</body>
+    <div id="sql_container"></div>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- Load our React component. -->
+    <script
+      src="{{ url_for('js', path='sql_fluffer.js') }}"
+      type="text/babel"
+    ></script>
+  </body>
 </html>
