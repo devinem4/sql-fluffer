@@ -13,6 +13,7 @@ const Editor = ({ placeHolder, onChange, value, readOnly }) => {
 const App = () => {
   const [sql, setSql] = React.useState("");
   const [fixedSql, setFixedSql] = React.useState("");
+  const [lint, setLint] = React.useState("");
 
   const fluffSql = () => {
     const endpoint = "https://sql-fluffer.herokuapp.com/fluff/";
@@ -27,6 +28,7 @@ const App = () => {
       .then((data) => {
         console.log(data);
         setFixedSql(data["fixed"]);
+        setLint(data["lint"]);
       });
   };
 
@@ -43,10 +45,21 @@ const App = () => {
           placeHolder="Fixed SQL goes here"
           value={fixedSql}
           readOnly={true}
-        ></Editor>
+        />
       </div>
       <hr />
       <button onClick={fluffSql}>fluff it!</button>
+      {lint ? (
+        <ul>
+          {lint.map((l) => (
+            <li>
+              {l.code} - {l.description}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <h3>no lint!</h3>
+      )}
     </div>
   );
 };
